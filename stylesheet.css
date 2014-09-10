@@ -1,0 +1,73 @@
+body{
+  background-color:#F5F5F1;
+}
+
+#beagle {
+  vertical-align:top;
+  background-color:#F5F5F1;
+
+  max-width:756px;
+  position:absolute;
+}
+
+.container{
+  display:inline-block;
+  background-color:white;
+  width:225px;
+  margin:0px 27px 18px 0px;
+  padding-bottom:8px;
+  border-radius:4px;
+  vertical-align:top;
+}
+
+.image{
+  height:179px;
+  width:224px;
+  margin:1px 30px 4px 1px;
+  border-radius:3px;
+}
+
+.title{
+  max-width:195px;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  margin-left:13px;
+  line-height:16px;
+}
+
+.title_link{
+  text-decoration:none;
+  color:#666674;
+  font-family:arial;
+  font-size:13px;
+}
+
+.shop_name{
+  display:inline-block;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  max-width:133px;
+}
+
+.shop_link{
+  text-decoration:none;
+  color:#B2B2B2;
+  font-family:arial;
+  font-size:13px;
+  margin-left:14px;
+  bottom:1.5px;
+}
+
+.price{
+  display:inline-block;
+  bottom:2px;
+  position:relative;
+  color:#78C19A;
+  font-size:13px;
+  font-family:arial;
+  float:right;
+  margin:3px 13px 0px 0px;
+  letter-spacing:-.4px;
+}

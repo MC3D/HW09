@@ -3,22 +3,28 @@ Error: Illegal nesting: Nothing may be nested beneath variable declarations.
         on line 9 of script.js
 
 4: 
-5:   // references var beagle in data.js
-6:   var results = beagle.results;
-7: 
-8:   $(document).ready(function(){ // runs the function on document ready
-9:     var $list = $('#beagle'); // targets div with id beagle in the html
-10: 
-11:     results.forEach(function(item){ // for each item in results (references var results)
-12:       var beagleItems = renderTemplate('beagleResults',{ //beagleResults is the name of the template in the html file I want to render
-13:         itemUrl: item.url,
-14:         itemImage: item.Images[0].url_170x135,
+5:   // name corresponds to the template name (e.g. beagleResults)
+6:   function renderTemplate(name, data) {
+7:     var $template = $('[data-template-name=' + name + ']').text();
+8:     $.each(data, function(prop, value) {
+9:       // for each beesting (e.g. <% itemUrl %>) in the html, replace it with the given value (e.g. item.url)
+10:       // this is what tells the forEach function below to replace <% itemUrl %> with item.url value
+11:       $template = $template.replace('<% ' + prop + ' %>', value);
+12:     });
+13:     return $template;
+14:   }
 
 Backtrace:
 script.js:9
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:729:in `parse_variable'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:631:in `parse_line'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:525:in `build_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:544:in `block in append_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:543:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:543:in `append_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:534:in `block in build_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:527:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:527:in `build_tree'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:544:in `block in append_children'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:543:in `each'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:543:in `append_children'
@@ -47,4 +53,4 @@ script.js:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Illegal nesting: Nothing may be nested beneath variable declarations.\A         on line 9 of script.js\A \A 4: \A 5:   // references var beagle in data.js\A 6:   var results = beagle.results;\A 7: \A 8:   $(document).ready(function(){ // runs the function on document ready\A 9:     var $list = $('#beagle'); // targets div with id beagle in the html\A 10: \A 11:     results.forEach(function(item){ // for each item in results (references var results)\A 12:       var beagleItems = renderTemplate('beagleResults',{ //beagleResults is the name of the template in the html file I want to render\A 13:         itemUrl: item.url,\A 14:         itemImage: item.Images[0].url_170x135,"; }
+  content: "Error: Illegal nesting: Nothing may be nested beneath variable declarations.\A         on line 9 of script.js\A \A 4: \A 5:   // name corresponds to the template name (e.g. beagleResults)\A 6:   function renderTemplate(name, data) {\A 7:     var $template = $('[data-template-name=' + name + ']').text();\A 8:     $.each(data, function(prop, value) {\A 9:       // for each beesting (e.g. <% itemUrl %>) in the html, replace it with the given value (e.g. item.url)\A 10:       // this is what tells the forEach function below to replace <% itemUrl %> with item.url value\A 11:       $template = $template.replace('<% ' + prop + ' %>', value);\A 12:     });\A 13:     return $template;\A 14:   }"; }
